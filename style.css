@@ -1,0 +1,138 @@
+body {
+    background: -webkit-linear-gradient(#c9d7ed,#8db7dd);
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.container {
+    text-align: center;
+    margin: 50px auto;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+* {
+    /*    border: 1px solid green;*/
+}
+
+.numberBlock {
+    /*        border: 1px solid black;*/
+    width: 100%;
+    height: 25%;
+    padding: 1px 1px 1px 5%;
+    margin: 1px auto;
+    padding-bottom: 1px ;
+}
+
+#numbers {
+    width: 100%;
+    height: 98%;
+    margin: 1% 1%;
+    padding: 0 0 0 0;
+}
+
+/*
+.numbers:nth-child(10){
+position: relative;
+left: 31.5%;
+}
+*/
+
+#clearNum, .numbers {
+    list-style: none;
+    border-radius: 3px;
+    width: 31%;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+    margin: 1px 1px;
+    font-size: 1.2em;
+    font-weight: bold;
+    white-space: normal;
+    border: 1px solid red;
+}
+
+
+
+.operatorBlock ul{
+    width: 96%;
+    height: 100%;
+    padding: 5px 5px 5px 5px;
+    margin: 1% 0;
+
+}
+
+.operatorBlock li {
+    list-style: none;
+    float: left;
+    width: 30%;
+    height: 30%;
+    border: 1px solid green;
+    margin: 1% 1%;
+    border-radius: 10px;
+    font-weight: bold;  
+    font-size: 1.3em;
+}
+
+.operatorBlock li:hover {
+    background: black;
+    color:white;
+}
+
+
+.numberBlock li:hover {
+    background: black;
+    color:white;
+}
+
+.row #result{
+    width: 100%;
+    height: 100px;
+}
+#result  {
+    font-weight: bold;
+    width: 50%;
+    border: 1px solid grey;
+    width: 50%;
+    height: 30%;
+    margin: 1%;
+    float: left;
+    padding-top: 5%;
+}
+
+@media screen and ( max-width: 768px) {
+    #operator {
+        padding-left: 10%;
+    }
+
+    #operator li {
+        list-style:none;
+        float: left;
+        width: 30%;
+        height:50%;
+        border: 1px solid green;
+        margin: 1px 1px 1px 10px;
+        border-radius: 10px;
+        font-weight: bold;  
+        padding-bottom: 6px;
+    }
+
+}
+
+@media screen and ( max-width: 478px){
+
+    #operator li {
+        width: 25%;
+        height: 40%;
+        color:mediumvioletred;
+    }
+    #operator li:hover {
+        color: aliceblue;
+
+    }
+    #operator {
+        padding-left: 10%;
+
+    }
+}
