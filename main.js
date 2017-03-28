@@ -2,87 +2,83 @@ function main(){
     var operand1
     var operand2;
     var operatorbtn;
- 
-    var counter = 0;
-    var limit = 5 ;
     
+    var limit = 5 ;
+
     var result = $('#result');//for result display
     var error = $('#error'); //for error display
     var errMesg = 'You have reached the limit.'; 
     var addSign = $('#addSign'); //text slot for operator sign
-    var arr = []; //array for numbers
-    var signOperatorArr = []; //array for operator
-    var index = 0; // index for array numbers
-    
+    var signOperatorArr = ''; //array for operator
+    var xVal = '';
+
 
     $('.numbers').click(function(){
-        
+
         var num = $(this);
-        
-//        counter = num.length ;
-        
-//        arr[index] = counter;
-        
-        console.log(arr)
-        
-        if(arr.length < limit ){
+
+
+        if(xVal.length < limit ){
 
             var value = num.data('value');
-            console.log(value);
-            arr.push(value);
 
-            console.log(arr);
+            xVal += value;
 
+            console.log(xVal);
         }
-        
+
         else {
             console.log(errMesg);
             error.html(errMesg);
         }
-        
-        result.html(arr)
-       
-        return arr;
-        
+
+        result.html(xVal)
+
+        return xVal;
+
     });
-    
-    
+
+
 
     $('.operator').click(
-        
+
         function(){
-            
-        var operator = $(this)
 
-        if(operator){
-            
-            operatorbtn = operator.data('value');
-            
-            signOperatorArr.push(operatorbtn);
-            
-            addSign.html(arr+operatorbtn);
-//            console.log(operatorbtn);
-            console.log(signOperatorArr);
-            
-            return signOperatorArr;
-        } 
+            var operator = $(this)
 
-    });
-    
+            if(operator){
+
+                operatorbtn = operator.data('value');
+
+                signOperatorArr += operatorbtn ;
+                
+                console.log(signOperatorArr)
+                addSign.html(signOperatorArr);
+                //            console.log(operatorbtn);
+                console.log(signOperatorArr);
+
+                return signOperatorArr;
+            } 
+
+        });
+
     $('#clearNum').click(function(){
-       
-      if(arr){
-          arr.pop();
-          return arr;
-      }
-//       deleteThem.pop();
-     if(signOperatorArr){
-         signOperatorArr.pop();
-         return signOperatorArr;
-     }
-       console.log(signOperatorArr);
-       result.html(arr);
-     
+        console.log(xVal.length);
+        if(xVal){
+            
+            xVal.substring(0,xVal-1);
+            console.log(xVal);
+
+            return xVal;
+        }
+        //       deleteThem.pop();
+        if(signOperatorArr){
+            signOperatorArr.pop();
+            return signOperatorArr;
+        }
+        console.log(signOperatorArr);
+        result.html(arr);
+
     });
 
 
