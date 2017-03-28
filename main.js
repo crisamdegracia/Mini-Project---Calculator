@@ -2,8 +2,8 @@ function main(){
     var operand1
     var operand2;
     var operatorbtn;
-    
-    var limit = 5 ;
+
+    var limit = 5 ; // limit of inputs
 
     var result = $('#result');//for result display
     var error = $('#error'); //for error display
@@ -32,7 +32,7 @@ function main(){
             error.html(errMesg);
         }
 
-        result.html(xVal)
+        result.html( xVal + signOperatorArr);
 
         return xVal;
 
@@ -44,41 +44,62 @@ function main(){
 
         function(){
 
-            var operator = $(this)
+            var operator = $(this);
 
             if(operator){
 
                 operatorbtn = operator.data('value');
 
-                signOperatorArr += operatorbtn ;
-                
-                console.log(signOperatorArr)
-                addSign.html(signOperatorArr);
-                //            console.log(operatorbtn);
-                console.log(signOperatorArr);
+                if(operatorbtn.length === 1 ){
 
+                    signOperatorArr = operatorbtn ;
+
+                    console.log(signOperatorArr)
+
+
+                }
+
+                else {
+                    signOperatorArr = operatorbtn;
+                    return signOperatorArr;
+                    console.log('else')
+                }
+
+                addSign.html( xVal + signOperatorArr );
                 return signOperatorArr;
             } 
 
+
+
         });
 
-    $('#clearNum').click(function(){
+    $('#clearNum').click(function() {
+
+        var clearMe = $(this);
+
         console.log(xVal.length);
-        if(xVal){
-            
-            xVal.substring(0,xVal-1);
-            console.log(xVal);
 
-            return xVal;
+        if(xVal) {
+            signOperatorArr = signOperatorArr.slice(0,-1);
+            xVal = xVal.slice(0,-1);
         }
-        //       deleteThem.pop();
-        if(signOperatorArr){
-            signOperatorArr.pop();
-            return signOperatorArr;
-        }
-        console.log(signOperatorArr);
-        result.html(arr);
+        
+//        if(signOperatorArr.length === 1 ){
+//            signOperatorArr = '';
+//        }
+        if(xVal.length <= 5 ) {
 
+            if(error) {
+
+                error.html('');
+            }
+
+        }
+
+        result.html( xVal + signOperatorArr );
+
+        return xVal, signOperatorArr ;
+//        return signOperatorArr;
     });
 
 
