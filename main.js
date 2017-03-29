@@ -1,48 +1,89 @@
 function main(){
     var operand1
     var operand2;
-    var operatorbtn;
-
+    var operatorbtn; // input value for operators
     var limit = 5 ; // limit of inputs
-
     var result = $('#result');//for result display
     var error = $('#error'); //for error display
     var errMesg = 'You have reached the limit.'; 
     var addSign = $('#addSign'); //text slot for operator sign
     var signOperatorArr = ''; //array for operator
     var xVal = '';
+    var cycle = false;
+    var errorCounter = false ;
+
+    $('.numbers').click(function(event){
+
+        var num = $(this); // gets the value from list of numbers
+        if(cycle === false){
+
+            if(xVal.length < limit ){ // checks input if less than the limit
+                var value = num.data('value');
+
+                xVal += value; 
+                operand1 = xVal;   
+                console.log(xVal);
+                result.html(xVal);
+                console.log('operand 1: ' +operand1)
+                return operand1;
+
+            }
+
+            else {
+                console.log('aba')
+                event.stopPropagation();
+                event.preventDefault();
+
+            }
 
 
-    $('.numbers').click(function(){
-
-        var num = $(this);
-
-
-        if(xVal.length < limit ){
-
-            var value = num.data('value');
-
-            xVal += value;
-
-            console.log(xVal);
         }
 
-        else {
+        if(cycle === true ){
+
+            value = num.data('value');
+
+            if(xVal.length < limit ){
+
+                xVal += value; 
+                operand2 = xVal;   
+                console.log('operand 2: '+operand2);
+                result.html(xVal);
+                operatorbtn = '';
+                if( operatorbtn === ''){
+                    console.log(operatorbtn+' checking');
+                    cycle = false ;
+
+                }
+                return operand2;
+            }
+            else { // else error
+                console.log(errMesg);
+
+                error.html(errMesg);
+                event.stopImmediatePropagation();
+                event.preventDefault();
+            }
+        }
+
+
+        else { // else error
             console.log(errMesg);
             error.html(errMesg);
         }
 
-        result.html( xVal + signOperatorArr);
+        console.log(operand1 + '  First Number')
+        console.log(operand1.length)
+        console.log(operand2 + '  Second Number')
 
-        return xVal;
 
     });
 
 
 
-    $('.operator').click(
+    $('.operator').click( 
 
-        function(){
+        function(){//checks if operator was clicked
 
             var operator = $(this);
 
@@ -50,57 +91,72 @@ function main(){
 
                 operatorbtn = operator.data('value');
 
-                if(operatorbtn.length === 1 ){
+                if(operatorbtn !== '' ){
 
                     signOperatorArr = operatorbtn ;
-
+                    cycle = true ;
+                    xVal = '';
+                    value = 0 ;
                     console.log(signOperatorArr)
-
 
                 }
 
                 else {
-                    signOperatorArr = operatorbtn;
-                    return signOperatorArr;
-                    console.log('else')
+                    error.html('Invalid Input.');
                 }
 
-                addSign.html( xVal + signOperatorArr );
+                result.html(signOperatorArr);
                 return signOperatorArr;
             } 
+
+        });
+
+    $('#clearNum').click(
+
+        function(e) { // delete every single string 
+
+            var clearMe = $(this);
+
+            if(operand1 !== '') {
+                console.log(operand1.length)
+                operand1 = operand1.slice(0,-1);
+                result.html(operand1);
+                if(error) {
+
+                    error.html('');
+                }
+                return operand1;
+            }  
+
+            if(operand2 !== '' ) {
+
+                operand2 = operand2.slice(0,-1);
+                result.html(operand2);
+
+                if(error) {
+
+                    error.html('');
+                }
+
+
+                return operand2;
+            }
+
+
+            console.log('hi teddy')
+            e.preventDefault();
+            e.stopImmediatePropagation();
 
 
 
         });
 
-    $('#clearNum').click(function() {
 
-        var clearMe = $(this);
+    function errorFunc(errMesg){
 
-        console.log(xVal.length);
+        error.html(errMesg);
 
-        if(xVal) {
-            signOperatorArr = signOperatorArr.slice(0,-1);
-            xVal = xVal.slice(0,-1);
-        }
-        
-//        if(signOperatorArr.length === 1 ){
-//            signOperatorArr = '';
-//        }
-        if(xVal.length <= 5 ) {
-
-            if(error) {
-
-                error.html('');
-            }
-
-        }
-
-        result.html( xVal + signOperatorArr );
-
-        return xVal, signOperatorArr ;
-//        return signOperatorArr;
-    });
+    }
 
 
 
@@ -123,8 +179,6 @@ function main(){
         var result = numerator / denominator
         return result;
     }
-
-
 
 
 
