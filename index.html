@@ -8,6 +8,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link href="style.css" type="text/css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 
@@ -28,7 +29,7 @@
                         <li class="numbers" data-value="7"> 7 </li>
                         <li class="numbers" data-value="8"> 8 </li>
                         <li class="numbers" data-value="9"> 9 </li>
-                        <li class="numbers" data-value="."> . </li>
+                        <li class="numbers" id="dot" data-value="."> . </li>
                         <li class="numbers" data-value="0"> 0 </li>
                         <li id="clearNum">Clear</li>
                     </ul>
@@ -43,7 +44,7 @@
                         <li class="operator" id="multiX" data-value="*">*</li>
                         <li class="operator" id="divX" data-value="/">/</li>
                         <li class="operator" id="modolousX" data-value="%">%</li>
-                        <li class="operator" id="totalX" data-value="=">=</li>
+                        <li  id="totalX" data-value="=">=</li>
                     </ul>
                 </div><!--col-->
 
@@ -61,12 +62,30 @@
 
 
         </div> <!--container-->
-        <footer>
-            <h5>
-                &copy; 2017 - Sam De Gracia
-            </h5>
-            
-        </footer>
+        <footer class="container-fluid">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12" id="footerNav">
+                        <i class="fa fa-html5"></i>
+                        <i class="fa fa-css3"></i>
+                        <i class="fa fa-android"></i>
+                        <i class="fa fa-windows"></i>
+                        <i class="fa fa-code"></i>
+                    </div><!--col-12-->
+                </div>
+                    <div class="row">
+                    <div class="col-lg-12" id="footerNav">
+                        <h4> &copy; Sam De Gracia - 2017</h4>
+                        <i class="fa fa-linkedin facebook"></i>
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-github"></i>
+                        <i class="fa fa-google-plus"></i>
+                        <i class="fa fa-twitter"></i>
+                    </div><!--col-12-->
+                </div>
+            </section>
+
+        </footer><!--container-->
 
         <!-- jQuery first, then Tether, then Bootstrap JS. -->
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

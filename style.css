@@ -1,14 +1,18 @@
+
+
 body {
-    background: -webkit-linear-gradient(#c9d7ed,#8db7dd);
+    background: black;
     text-align: center;
-    padding: 20px;
+/*    padding: 20px;*/
     margin: 0 auto;
+   
 }
 
+h1 { color:aliceblue}
 .container {
     text-align: center;
     margin: 50px auto;
-    border: 1px solid black;
+    border: 1px solid green;
     border-radius: 10px;
 }
 
@@ -23,13 +27,15 @@ body {
     padding: 1px 1px 1px 5%;
     margin: 1px auto;
     padding-bottom: 1px ;
+    
 }
 
 #numbers {
     width: 100%;
     height: 98%;
     margin: 1% 1%;
-    padding: 0 0 0 0;
+    padding:0 0 0 0;
+    background-color: aliceblue;
 }
 
 /*
@@ -45,12 +51,12 @@ left: 31.5%;
     width: 31%;
     float: left;
     text-align: center;
-    border: 1px solid black;
     margin: 1px 1px;
     font-size: 1.2em;
     font-weight: bold;
     white-space: normal;
-    border: 1px solid red;
+    border: 1px solid green;
+    background-color:antiquewhite;
 }
 
 
@@ -64,15 +70,17 @@ left: 31.5%;
 }
 
 .operatorBlock li {
+    
     list-style: none;
     float: left;
     width: 30%;
     height: 30%;
     border: 1px solid green;
-    margin: 1% 1%;
+    margin: 5% 5%;
     border-radius: 10px;
     font-weight: bold;  
     font-size: 1.3em;
+    background-color: antiquewhite;
 }
 
 .operatorBlock li:hover {
@@ -99,6 +107,45 @@ left: 31.5%;
     margin: 1%;
     float: left;
     padding-top: 5%;
+    color: aliceblue;
+}
+
+footer {
+    background: url('bg.jpg')no-repeat center;
+    margin-bottom: 0;
+    padding-top: 40px;
+    padding-bottom: 120px;
+   
+}
+.fa-windows,
+.fa-html5,
+.fa-css3,
+.fa-linkedin,
+.fa-google-plus,
+.fa-android,
+.fa-facebook,
+.fa-github,
+.fa-code,
+.fa-twitter{
+    background-color: aliceblue;
+    padding:19px;
+    border-radius: 90%;
+    font-size: 32px;
+    
+}
+.fa-windows:hover{background-color:olivedrab; color: black;}
+.fa-code:hover{background-color: black; color:white;}
+.fa-css3:hover{background-color: yellow; color: black}
+.fa-html5:hover{background-color: firebrick; color:black; }
+.fa-linkedin:hover{background-color: mediumblue; color:white;}
+.fa-google-plus:hover{background-color: firebrick; color:white;}
+.fa-twitter:hover{background-color: dodgerblue; color:white;}
+.fa-github:hover{background-color: black; color:white;}
+.fa-android:hover{background-color: darkgreen;color:black;}
+
+.fa-facebook:hover {
+    background-color: darkblue;
+    color:white;
 }
 
 @media screen and ( max-width: 768px) {

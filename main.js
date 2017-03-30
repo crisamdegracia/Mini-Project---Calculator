@@ -1,6 +1,6 @@
 function main(){
-    var operand1
-    var operand2;
+    var operand1 = '' ;
+    var operand2 = '' ;
     var operatorbtn; // input value for operators
     var limit = 5 ; // limit of inputs
     var result = $('#result');//for result display
@@ -11,29 +11,27 @@ function main(){
     var xVal = '';
     var cycle = false;
     var errorCounter = false ;
-
+    var dot = $('#dot');
+    var dotCount = 0;
+    var finalResult = '';
     $('.numbers').click(function(event){
 
         var num = $(this); // gets the value from list of numbers
         if(cycle === false){
 
-            if(xVal.length < limit ){ // checks input if less than the limit
+            if(operand1.length < limit){ // checks input if less than the limit
                 var value = num.data('value');
 
-                xVal += value; 
-                operand1 = xVal;   
-                console.log(xVal);
-                result.html(xVal);
+                operand1 += value;   
+                console.log(operand1);
+                result.html(operand1);
                 console.log('operand 1: ' +operand1)
                 return operand1;
 
+
             }
-
             else {
-                console.log('aba')
-                event.stopPropagation();
-                event.preventDefault();
-
+                return;
             }
 
 
@@ -43,25 +41,24 @@ function main(){
 
             value = num.data('value');
 
-            if(xVal.length < limit ){
+            if(operand2.length < limit ){
 
-                xVal += value; 
-                operand2 = xVal;   
+                operand2 += value;   
+
                 console.log('operand 2: '+operand2);
-                result.html(xVal);
-                operatorbtn = '';
-                if( operatorbtn === ''){
-                    console.log(operatorbtn+' checking');
-                    cycle = false ;
 
-                }
+                result.html(operand2);
+
+                operatorbtn = '';
+                console.log(operatorbtn+' checking');
+                //                    cycle = false ;
                 return operand2;
             }
-            else { // else error
-                console.log(errMesg);
 
+
+            else { // else error
                 error.html(errMesg);
-                event.stopImmediatePropagation();
+                console.log(errMesg);
                 event.preventDefault();
             }
         }
@@ -75,6 +72,7 @@ function main(){
         console.log(operand1 + '  First Number')
         console.log(operand1.length)
         console.log(operand2 + '  Second Number')
+        console.log(operand2.length)
 
 
     });
@@ -116,69 +114,118 @@ function main(){
         function(e) { // delete every single string 
 
             var clearMe = $(this);
+            if(cycle === false){
+                if(operand1 !== '' && operand1.length > 0 ) {
 
-            if(operand1 !== '') {
-                console.log(operand1.length)
-                operand1 = operand1.slice(0,-1);
-                result.html(operand1);
-                if(error) {
+                    operand1 = operand1.slice(0,-1);
+                    result.html(operand1);
+                    console.log(operand1.length)
+                    if(error) {
 
-                    error.html('');
-                }
-                return operand1;
-            }  
+                        error.html('');
+                    }
+                    return clearMe.operand1;
+                }  
+            }
 
-            if(operand2 !== '' ) {
+            if(operand2 !== '' && operand2.length > 0 ) {
 
                 operand2 = operand2.slice(0,-1);
                 result.html(operand2);
-
+                console.log(operand2.length);
                 if(error) {
-
                     error.html('');
                 }
-
-
                 return operand2;
             }
 
+            // if has sign operator delete from last index string
+            if(signOperatorArr !== '' && signOperatorArr.length > 0 ){ 
+                signOperatorArr = signOperatorArr.slice(0,-1);
+                result.html(signOperatorArr)
+                
+            }
+            
+            //if has final result delete from the last string
+            if(finalResult !== '' && finalResult.length > 0 ){ 
+                console.log(finalResult+' mahusay!')
+                
+                finalResult = finalResult.slice(0,-1);
+                result.html(finalResult);
+                 operand1 = '';
+                operand2 = '';
+                signOperatorArr = '';
+                cycle = false;
+            }
 
-            console.log('hi teddy')
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-
-
+            else {
+                operand1 = '';
+                operand2 = '';
+                signOperatorArr = '';
+                cycle = false;
+                finalResult = '';
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('hi teddy');
+                console.log('operand 1: '+operand1.length)
+                console.log('operand 2 : ' +operand2.length)
+            }
         });
 
 
-    function errorFunc(errMesg){
+    $('#totalX').click(function(e){
+        var x =  parseInt(operand1);
+        var y =  parseInt(operand2);
 
-        error.html(errMesg);
+        if(signOperatorArr === "+"){
+            finalResult += x+y;
+            result.html(finalResult);
+            operand1 = '';
+            operand2 = '';
+            cycle = false;
+            signOperatorArr = '';
 
-    }
+        }
+        if(signOperatorArr === "-"){
+           finalResult += x-y;
+            result.html(finalResult)
+            operand1 = '';
+            operand2 = '';
+            cycle = false;
+            signOperatorArr = '';
+        }
+        if(signOperatorArr === "*"){
+            finalResult += x*y;
+            result.html(finalResult)
+            operand1 = '';
+            operand2 = '';
+            cycle = false;
+            signOperatorArr = '';
+        }
+        if(signOperatorArr === "/"){
+            finalResult += x/y;
+            result.html(finalResult);
+            operand1 = '';
+            operand2 = '';
+            cycle = false;
+            signOperatorArr = '';
+        }
+        if(signOperatorArr === "%"){
+            finalResult += x%y;
+            result.html(finalResult)
+            operand1 = '';
+            operand2 = '';
+            cycle = false;
+            signOperatorArr = '';
+        }
+        //
+        //        else {
+        //            result.html('Can not resolve. ')
+        //            e.preventDefault();
+        //            e.stopPropagation();
+        //        }
 
-
-
-    function add(numerator,denominator){
-        var result =  numerator + denominator;
-        return result;
-    }
-
-    function subtractio(numerator,denominator){
-        var result =  numerator - denominator;
-        return result
-    }
-
-    function multiply(numerator , denominator){
-        var result = numerator * denominator ;
-        return result;
-    }
-
-    function divide(numerator, denominator){
-        var result = numerator / denominator
-        return result;
-    }
+    });
 
 
 
