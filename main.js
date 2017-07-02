@@ -14,6 +14,7 @@ function main(){
     var dot = $('#dot');
     var dotCount = 0;
     var finalResult = '';
+    
     $('.numbers').click(function(event){
 
         var num = $(this); // gets the value from list of numbers
@@ -174,6 +175,7 @@ function main(){
 
 
     $('#totalX').click(function(e){
+        
         var x =  parseInt(operand1);
         var y =  parseInt(operand2);
 
