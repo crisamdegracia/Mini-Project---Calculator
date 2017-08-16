@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Required meta tags -->
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link href="style.css" type="text/css" rel="stylesheet">
         <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -17,48 +16,37 @@
             <h1> Web App Calculator </h1>
 
             <div class="row">
-                <div class="col-xs-8 col-md-6 numberBlock">
+                <div class="col-8 col-sm-6 col-md-6 col-lg-6 m-auto numberBlock">
 
                     <ul id="numbers">
-                        <li class="numbers" data-value="1"> 11 </li>
-                        <li class="numbers" data-value="2"> 2 </li>
-                        <li class="numbers" data-value="3"> 3 </li>
-                        <li class="numbers" data-value="4"> 4 </li>
-                        <li class="numbers" data-value="5"> 5 </li>
-                        <li class="numbers" data-value="6"> 6 </li>
-                        <li class="numbers" data-value="7"> 7 </li>
-                        <li class="numbers" data-value="8"> 8 </li>
-                        <li class="numbers" data-value="9"> 9 </li>
-                        <li class="numbers" id="dot" data-value="."> . </li>
-                        <li class="numbers" data-value="0"> 0 </li>
+                        <li class="numbers" data-value="1">1</li>
+                        <li class="numbers" data-value="2">2</li>
+                        <li class="numbers" data-value="3">3</li>
+                        <li class="numbers" data-value="4">4</li>
+                        <li class="numbers" data-value="5">5</li>
+                        <li class="numbers" data-value="6">6</li>
+                        <li class="numbers" data-value="7">7</li>
+                        <li class="numbers" data-value="8">8</li>
+                        <li class="numbers" data-value="9">9</li>
+                        <li class="numbers" id="dot" data-value=".">.</li>
+                        <li class="numbers" data-value="0">0</li>
                         <li id="clearNum">Clear</li>
                     </ul>
 
-                </div><!--.col-8-->
-
-
-                <div  class="col-xs-4 col-md-6 text-center operatorBlock">
-                    <ul id="operator">
-                        <li class="operator" id="addX" data-value="+">+</li>
-                        <li class="operator" id="subX" data-value="-">-</li>
-                        <li class="operator" id="multiX" data-value="*">*</li>
-                        <li class="operator" id="divX" data-value="/">/</li>
-                        <li class="operator" id="modolousX" data-value="%">%</li>
-                        <li  id="totalX" data-value="=">=</li>
+                    <ul class="operator" id="operator">
+                        <li class="operator p-2" id="addX" data-value="+">+</li>
+                        <li class="operator p-2" id="subX" data-value="-">-</li>
+                        <li class="operator p-2" id="multiX" data-value="*">*</li>
+                        <li class="operator p-2" id="divX" data-value="/">/</li>
+                        <li class="operator p-2" id="modolousX" data-value="%">%</li>
+                        <li class="p-2" id="totalX" data-value="=">=</li>
                     </ul>
-                </div><!--col-->
-
-            </div><!--row-->
 
 
-            <div class="row">
-
-                <div class="col-sm-12" id="ss">
-
-                    <p id="result">0 <span id="addSign"></span></p>
-                    <h4 id="error"></h4>
-                </div><!--col-->
-            </div><!--row-->
+                <p id="result">0<span id="addSign"></span></p>
+                <h4 id="error"></h4>
+                </div>
+            </div><!--col-->
 
 
         </div> <!--container-->
@@ -73,7 +61,7 @@
                         <i class="fa fa-code"></i>
                     </div><!--col-12-->
                 </div>
-                    <div class="row">
+                <div class="row">
                     <div class="col-lg-12" id="footerNav">
                         <h4> &copy; Sam De Gracia - 2017</h4>
                         <i class="fa fa-linkedin facebook"></i>

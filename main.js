@@ -1,56 +1,73 @@
 function main(){
-    var operand1 = '' ;
-    var operand2 = '' ;
-    var operatorbtn; // input value for operators
-    var limit = 5 ; // limit of inputs
+    var operand1 = '';
+    var operand2 = '';
+    var operatorbtn = ''; // input value for operators
+    var limit = 6 ; // limit of inputs
     var result = $('#result');//for result display
     var error = $('#error'); //for error display
     var errMesg = 'You have reached the limit.'; 
     var addSign = $('#addSign'); //text slot for operator sign
-    var signOperatorArr = ''; //array for operator
+    //    var operatorbtn = ''; //array for operator but it's just a string LOL
     var xVal = '';
     var cycle = false;
     var errorCounter = false ;
     var dot = $('#dot');
     var dotCount = 0;
     var finalResult = '';
-    
-    $('.numbers').click(function(event){
 
-        var num = $(this); // gets the value from list of numbers
-        if(cycle === false){
 
-            if(operand1.length < limit){ // checks input if less than the limit
-                var value = num.data('value');
+    $('.numbers').click(function(e){
 
+        var self = $(this); // gets the value from list of numbers
+        //Cycle checks the first and 2nd value
+        e.preventDefault();
+        e.stopPropagation();
+        if(!cycle){
+
+            //the value of numbers
+            var value = self.data('value');
+
+            if(value !== '' && operand1.length < limit){ // checks input if less than the limit
+
+                //every number that clicks 
                 operand1 += value;   
-                console.log(operand1);
+                //console.log(operand1);
+
+                //displays the value of clicks
                 result.html(operand1);
-                console.log('operand 1: ' +operand1)
+
+                //console.log('operand 1: ' +operand1)
+
+                //returns with value
                 return operand1;
 
-
-            }
-            else {
+            } else {
+                error.html('Max 6 digits.')
+                //return nothing
                 return;
             }
+        }/* if !cycle*/
 
+        //if cycle is true then put the 2nd value
+        else {
 
-        }
+            self = $(this);
+            //value of second number to be operate
+            value = self.data('value');
 
-        if(cycle === true ){
-
-            value = num.data('value');
-
-            if(operand2.length < limit ){
+            //checks the limit to be operate
+            if(value !== '' && operand2.length < limit ){
 
                 operand2 += value;   
 
                 console.log('operand 2: '+operand2);
 
+                //display the clicks on result field
                 result.html(operand2);
 
+                //not sure abt thie one looks like to remove the displayed operator
                 operatorbtn = '';
+
                 console.log(operatorbtn+' checking');
                 //                    cycle = false ;
                 return operand2;
@@ -58,55 +75,73 @@ function main(){
 
 
             else { // else error
+                e.preventDefault();
+                e.stopPropagation();
                 error.html(errMesg);
                 console.log(errMesg);
-                event.preventDefault();
+                e.preventDefault();
             }
-        }
 
+        } 
 
-        else { // else error
-            console.log(errMesg);
-            error.html(errMesg);
-        }
-
-        console.log(operand1 + '  First Number')
-        console.log(operand1.length)
-        console.log(operand2 + '  Second Number')
-        console.log(operand2.length)
-
+        //        console.log(operand1 + '  First Number')
+        //        console.log(operand1.length)
+        //        console.log(operand2 + '  Second Number')
+        //        console.log(operand2.length)
 
     });
 
 
 
+
     $('.operator').click( 
 
-        function(){//checks if operator was clicked
+        function(e){//checks if operator was clicked
+            //the value of operators like +,-,/,%
+            var self = $(this);
 
-            var operator = $(this);
+            e.preventDefault();
+            e.stopPropagation();
 
-            if(operator){
+            //if there's a clicked operator
+            if(operand1.length <= limit && operand1 !== '' ){
 
-                operatorbtn = operator.data('value');
+                //the sets its value
+                operatorbtn = self.data('value');
 
-                if(operatorbtn !== '' ){
+                console.log('true');
 
-                    signOperatorArr = operatorbtn ;
-                    cycle = true ;
-                    xVal = '';
-                    value = 0 ;
-                    console.log(signOperatorArr)
+                if(operatorbtn !== '' && (operand1.length < limit || operand2.length < limit ) ){
 
-                }
 
-                else {
+                    //what is this????
+                    //                    xVal = '';
+
+                    //                    console.log('i am xVal ' + xVal)
+
+                    //value sets back to zero
+                    //                    value = 0;
+                    //making it true so the 2nd value will get value when operator is pressed
+                    cycle = true;
+
+                    //                    console.log("operator  " + operatorbtn)
+                    console.log("operator  " + operatorbtn);
+                    console.log("operand  " + operand1);
+                    error.html('');
+                    result.html(operatorbtn);
+                    return operatorbtn;
+
+                } else {
                     error.html('Invalid Input.');
+                    console.log('nah nah nah')
                 }
 
-                result.html(signOperatorArr);
-                return signOperatorArr;
-            } 
+            } else {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Must be good! " + operand1)
+                error.html('Max 6 digits.')
+            }
 
         });
 
@@ -114,121 +149,143 @@ function main(){
 
         function(e) { // delete every single string 
 
-            var clearMe = $(this);
-            if(cycle === false){
+            var self = $(this);
+            e.preventDefault();
+            e.stopPropagation();
+            //if cycle false
+            //meaning if 1st value is not emoty
+            if(!cycle){
+
                 if(operand1 !== '' && operand1.length > 0 ) {
 
+                    //removes the last string
                     operand1 = operand1.slice(0,-1);
                     result.html(operand1);
+
+                    //keeping the result zero if deleted
+                    if( result.val() === '' ){
+
+                        result.html('0')
+                    }
+
                     console.log(operand1.length)
+
+                    //if there's an error
                     if(error) {
 
                         error.html('');
                     }
-                    return clearMe.operand1;
+
+                    return operand1;
                 }  
             }
+            else if (cycle){
+                if(operand2 !== '' && operand2.length > 0 ) {
 
-            if(operand2 !== '' && operand2.length > 0 ) {
+                    operand2 = operand2.slice(0,-1);
+                    result.html(operand2);
+                    console.log(operand2.length);
+                    if(error) {
+                        error.html('');
+                    }
 
-                operand2 = operand2.slice(0,-1);
-                result.html(operand2);
-                console.log(operand2.length);
-                if(error) {
-                    error.html('');
+                    //if result is zero then 
+                    if( result.val() === '' ){
+                        result.html('0')
+                    }
+
+                    return operand2;
                 }
-                return operand2;
             }
-
             // if has sign operator delete from last index string
-            if(signOperatorArr !== '' && signOperatorArr.length > 0 ){ 
-                signOperatorArr = signOperatorArr.slice(0,-1);
-                result.html(signOperatorArr)
-                
-            }
-            
-            //if has final result delete from the last string
-            if(finalResult !== '' && finalResult.length > 0 ){ 
-                console.log(finalResult+' mahusay!')
-                
-                finalResult = finalResult.slice(0,-1);
-                result.html(finalResult);
-                 operand1 = '';
-                operand2 = '';
-                signOperatorArr = '';
-                cycle = false;
-            }
-
-            else {
-                operand1 = '';
-                operand2 = '';
-                signOperatorArr = '';
-                cycle = false;
-                finalResult = '';
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('hi teddy');
-                console.log('operand 1: '+operand1.length)
-                console.log('operand 2 : ' +operand2.length)
-            }
+//            if(operatorbtn !== '' && operatorbtn.length > 0 ){ 
+//                operatorbtn = operatorbtn.slice(0,-1);
+//                result.html(operatorbtn)
+//
+//            }
+//
+//            //if has final result delete from the last string
+//            if(finalResult !== '' && finalResult.length > 0 ){ 
+//                console.log(finalResult+' mahusay!')
+//
+//                finalResult = finalResult.slice(0,-1);
+//                result.html(finalResult);
+//                operand1 = '';
+//                operand2 = '';
+//                operatorbtn = '';
+//                cycle = false;
+//            }
+//
+//            else {
+//                operand1 = '';
+//                operand2 = '';
+//                operatorbtn = '';
+//                cycle = false;
+//                finalResult = '';
+//                e.preventDefault();
+//                e.stopPropagation();
+//                console.log('hi teddy');
+//                console.log('operand 1: '  + operand1.length)
+//                console.log('operand 2 : ' + operand2.length)
+//            }
         });
 
-
-    $('#totalX').click(function(e){
-        
-        var x =  parseInt(operand1);
-        var y =  parseInt(operand2);
-
-        if(signOperatorArr === "+"){
-            finalResult += x+y;
-            result.html(finalResult);
-            operand1 = '';
-            operand2 = '';
-            cycle = false;
-            signOperatorArr = '';
-
-        }
-        if(signOperatorArr === "-"){
-           finalResult += x-y;
-            result.html(finalResult)
-            operand1 = '';
-            operand2 = '';
-            cycle = false;
-            signOperatorArr = '';
-        }
-        if(signOperatorArr === "*"){
-            finalResult += x*y;
-            result.html(finalResult)
-            operand1 = '';
-            operand2 = '';
-            cycle = false;
-            signOperatorArr = '';
-        }
-        if(signOperatorArr === "/"){
-            finalResult += x/y;
-            result.html(finalResult);
-            operand1 = '';
-            operand2 = '';
-            cycle = false;
-            signOperatorArr = '';
-        }
-        if(signOperatorArr === "%"){
-            finalResult += x%y;
-            result.html(finalResult)
-            operand1 = '';
-            operand2 = '';
-            cycle = false;
-            signOperatorArr = '';
-        }
-        //
-        //        else {
-        //            result.html('Can not resolve. ')
-        //            e.preventDefault();
-        //            e.stopPropagation();
-        //        }
-
-    });
-
+    
+        $('#totalX').click(function(e){
+    
+            var x =  parseInt(operand1);
+            var y =  parseInt(operand2);
+    
+            if(operatorbtn === "+"){
+                finalResult += x+y;
+                result.html(finalResult);
+                operand1 = '';
+                operand2 = '';
+                cycle = false;
+                operatorbtn = '';
+    
+            }
+            if(operatorbtn === "-"){
+                finalResult += x-y;
+                result.html(finalResult)
+                operand1 = '';
+                operand2 = '';
+                cycle = false;
+                operatorbtn = '';
+            }
+            if(operatorbtn === "*"){
+                finalResult += x*y;
+                result.html(finalResult)
+                operand1 = '';
+                operand2 = '';
+                cycle = false;
+                operatorbtn = '';
+            }
+            if(operatorbtn === "/"){
+                finalResult += x/y;
+                result.html(finalResult);
+                operand1 = '';
+                operand2 = '';
+                cycle = false;
+                operatorbtn = '';
+            }
+            if(operatorbtn === "%"){
+                finalResult += x%y;
+                result.html(finalResult)
+                operand1 = '';
+                operand2 = '';
+                cycle = false;
+                operatorbtn = '';
+            }
+            //
+            //        else {
+            //            result.html('Can not resolve. ')
+            //            e.preventDefault();
+            //            e.stopPropagation();
+            //        }
+    
+        });
+    
 
 
 }

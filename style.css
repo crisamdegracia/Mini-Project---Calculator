@@ -1,14 +1,14 @@
 
 
 body {
-    background: black;
+    background: #301;
     text-align: center;
 /*    padding: 20px;*/
     margin: 0 auto;
    
 }
 
-h1 { color:aliceblue}
+h1 { color:#ddd}
 .container {
     text-align: center;
     margin: 50px auto;
@@ -22,20 +22,20 @@ h1 { color:aliceblue}
 
 .numberBlock {
     /*        border: 1px solid black;*/
-    width: 100%;
-    height: 25%;
-    padding: 1px 1px 1px 5%;
-    margin: 1px auto;
-    padding-bottom: 1px ;
+/*    width: 100%;*/
+/*    height: 25%;*/
+/*    padding: 1px 1px 1px 5%;*/
+/*    margin: 1px 0;*/
+/*    padding-bottom: 1px ;*/
     
 }
 
 #numbers {
-    width: 100%;
+/*    border: 1px solid red;*/
+/*    width: 100%;*/
 /*    height: 98%;*/
-    margin: 1% 1%;
-    padding:0 0 0 0;
-    background-color: antiquewhite;
+/*    margin: 1% 1%;*/
+/*    padding:0 0 0 0;*/
 }
 
 /*
@@ -56,57 +56,63 @@ left: 31.5%;
     font-weight: bold;
     white-space: normal;
     border: 1px solid green;
-    background-color:antiquewhite;
+    background-color:#eee;
 }
 
 
 
-.operatorBlock ul{
-    width: 96%;
-    height: 100%;
-    padding: 5px 5px 5px 5px;
-    margin: 1% 0;
+#operator {
+    list-style:none;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+/*    width: au    */
+/*    height: 100%;*/
+/*    padding: 5px 5px 5px 5px;*/
+/*    margin: 1% auto;*/
 
 }
 
-.operatorBlock li {    
-    list-style: none;
+.operator li {    
+ list-style: none;
+    border-radius: 3px;
+    width: 15.19999%;
     float: left;
-    width: 30%;
-    height: 30%;
+    text-align: center;
+    margin: 1px 1px;
+    font-size: 1em;
+    font-weight: bold;
+    white-space: normal;
     border: 1px solid green;
-    margin: 1% 1%;
-    border-radius: 10px;
-    font-weight: bold;  
-    font-size: 1.3em;
-    background-color: antiquewhite;
+    background-color:#eee;
+    
 }
 
-.operatorBlock li:hover {
-    background: black;
-    color:white;
+.operator li:hover {
+    background: #222;
+    color:#ddd;
 }
 
 
 .numberBlock li:hover {
-    background: black;
-    color:white;
+    background: #323;
+    color:#aaa;
 }
 
 .row #result{
-    width: 100%;
-    height: 100px;
+/*    width: 100%;*/
+/*    height: 100px;*/
 }
 #result  {
     font-weight: bold;
-    width: 50%;
+/*    width: 50%;*/
     border: 1px solid grey;
-    width: 50%;
-    height: 30%;
+/*    width: 50%;*/
+/*    height: 30%;*/
     margin: 1%;
-    float: left;
-    padding-top: 5%;
-    color: aliceblue;
+/*    float: left;*/
+    padding: 2%;
+    color: #aaa;
 }
 
 footer {
@@ -148,37 +154,12 @@ footer {
 }
 
 @media screen and ( max-width: 768px) {
-    #operator {
-        padding-left: 10%;
-    }
 
-    #operator li {
-        list-style:none;
-        float: left;
-        width: 30%;
-        height:50%;
-        border: 1px solid green;
-        margin: 1px 1px 1px 10px;
-        border-radius: 10px;
-        font-weight: bold;  
-        padding-bottom: 6px;
-    }
+/*    #operator li {*/
+/*        border: 1px solid green;*/
+/*        border-radius: 10px;*/
+/*    }*/
+
 
 }
 
-@media screen and ( max-width: 478px){
-
-    #operator li {
-        width: 25%;
-        height: 40%;
-        color:mediumvioletred;
-    }
-    #operator li:hover {
-        color: aliceblue;
-
-    }
-    #operator {
-        padding-left: 10%;
-
-    }
-}
